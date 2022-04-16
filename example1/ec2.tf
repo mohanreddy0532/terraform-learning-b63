@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "sample" {
-  ami  = "ami-0bb6af715826253bf"
-  type = "t3.micro"
+  ami           = "ami-0bb6af715826253bf"
+  instance_type = "t3.micro"
 }
 
 output "public_ip" {
