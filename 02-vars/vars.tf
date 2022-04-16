@@ -35,7 +35,7 @@ variable "sample4" {
 }
 
 variable "sample5" {
-  type = map(string) ## optional
+  type = map(any) ## optional
   default = {
     string  = "Hello",
     number  = 100,
