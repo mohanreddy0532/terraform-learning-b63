@@ -11,7 +11,7 @@ resource "null_resource" "sample" {
   count = length(var.ALL_COMPONENTS)
   provisioner "local-exec" {
     command = <<EOF
-echo COMPONENT = ${lookup(var.ALL_COMPONENTS[count.index], COMPONENT, null)}
+echo COMPONENT = ${lookup(tomap(var.ALL_COMPONENTS[count.index]), COMPONENT, null)}
 EOF
   }
 }
