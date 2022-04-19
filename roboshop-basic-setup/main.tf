@@ -15,7 +15,7 @@ echo COMPONENT = ${[for o in var.ALL_COMPONENTS[count.index] : o.COMPONENT]}
 EOF
   }
 }
-
-output "sample" {
-  value = [for o in var.ALL_COMPONENTS : o.COMPONENT]
-}
+//
+//output "sample" {
+//  value = [for o in var.ALL_COMPONENTS : o.COMPONENT]
+//}
