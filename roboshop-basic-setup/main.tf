@@ -11,7 +11,7 @@ resource "null_resource" "sample" {
   count = length(var.ALL_COMPONENTS)
   provisioner "local-exec" {
     command = <<EOF
-echo COMPONENT = [for o in var.ALL_COMPONENTS[count.index] : o.COMPONENT]
+echo COMPONENT = ${[for o in var.ALL_COMPONENTS[count.index] : o.COMPONENT]}
 EOF
   }
 }
