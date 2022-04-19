@@ -7,16 +7,12 @@
 //
 
 
-//resource "null_resource" "sample" {
-//
-//  provisioner "local-exec" {
-//    command = <<EOF
-//echo COMPONENT = ${each.value["COMPONENT"]}
-//EOF
-//  }
-//}
-//
-
-output "sample" {
-  value = [for o in var.COMPONENTS : o.COMPONENT]
+resource "null_resource" "sample" {
+  for_each = var.ALL_COMPONENTS
+  provisioner "local-exec" {
+    command = <<EOF
+echo COMPONENT = ${each.value["COMPONENT"]}
+EOF
+  }
 }
+
