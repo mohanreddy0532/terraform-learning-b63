@@ -1,4 +1,4 @@
-module "frontend" {
+module "component" {
   count       = length(var.COMPONENTS)
   source      = "./ec2"
   COMPONENT   = var.COMPONENTS[count.index]
