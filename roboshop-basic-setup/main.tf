@@ -8,6 +8,9 @@
 
 
 resource "null_resource" "sample" {
+  triggers = {
+    abc = timestamp()
+  }
   count = length(var.ALL_COMPONENTS)
   provisioner "local-exec" {
     command = <<EOF
