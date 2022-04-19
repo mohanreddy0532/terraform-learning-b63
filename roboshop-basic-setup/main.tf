@@ -8,10 +8,11 @@
 
 
 resource "null_resource" "sample" {
-  count = length(var.ALL_COMPONENTS)
+  for_each = var.COMPONENTS
   provisioner "local-exec" {
     command = <<EOF
-echo COMPONENT = ${lookup(tomap(var.ALL_COMPONENTS[count.index]), COMPONENT, null)}
+echo COMPONENT = ${each.value["COMPONENT"]}
 EOF
   }
 }
+
