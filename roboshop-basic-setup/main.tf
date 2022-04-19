@@ -11,10 +11,10 @@ resource "null_resource" "sample" {
   triggers = {
     abc = timestamp()
   }
-  count = length(var.ALL_COMPONENTS)
+  for_each = var.sample
   provisioner "local-exec" {
     command = <<EOF
-echo COMPONENT = ${for o in var.ALL_COMPONENTS[count.index] : o.COMPONENT}
+echo COMPONENT = ${each.key}
 EOF
   }
 }
@@ -22,3 +22,23 @@ EOF
 //output "sample" {
 //  value = [for o in var.ALL_COMPONENTS : o.COMPONENT]
 //}
+
+variable "ALL_COMPONENTS" {
+  default = {
+    app01 = {
+      COMPONENT   = "mongodb",
+      APP_VERSION = "null"
+    },
+    app02 = {
+      COMPONENT   = "catalogue",
+      APP_VERSION = "1.0.0"
+    }
+  }
+}
+
+variable "sample" {
+  default = {
+    mongodb   = "null"
+    catalogue = "1.0.0"
+  }
+}
