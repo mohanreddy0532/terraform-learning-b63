@@ -7,7 +7,7 @@ variable "COMPONENTS" {
 
 variable "APP_VERSION" {
   default = [
-    null,
+    "null",
     "1.0.0"
   ]
 }
