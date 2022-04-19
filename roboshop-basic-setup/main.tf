@@ -14,7 +14,7 @@ resource "null_resource" "sample" {
   for_each = var.sample
   provisioner "local-exec" {
     command = <<EOF
-echo COMPONENT = ${each.key}
+echo COMPONENT = ${each.key}, APP_VERSION = ${each.value}
 EOF
   }
 }
