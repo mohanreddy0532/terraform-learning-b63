@@ -7,10 +7,12 @@ resource "aws_spot_instance_request" "cheap_worker" {
   tags = {
     Name = "test"
   }
+}
 
+resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
     connection {
-      host     = self.public_ip
+      host     = aws_spot_instance_request.cheap_worker.public_ip
       user     = "centos"
       password = "DevOps321"
     }
@@ -18,7 +20,6 @@ resource "aws_spot_instance_request" "cheap_worker" {
       "exit 1"
     ]
   }
-
 }
 
 
