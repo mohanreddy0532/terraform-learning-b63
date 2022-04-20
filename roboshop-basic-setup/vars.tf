@@ -31,7 +31,7 @@ variable "ALL_COMPONENTS" {
   default = {
     mongodb = {
       app_version = "null"
-    },
+    }
     catalogue = {
       app_version = "1.0.0"
     }
